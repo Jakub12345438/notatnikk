@@ -35,22 +35,15 @@ export class AuthenticationService {
 
         return this.http.post<any>(`http://localhost:8080/login`, {username: username, password: password} , {
             headers: {'Content-Type': 'application/json' }
-        }).subscribe({next: (response) => {
-            console.log(JSON.stringify(response));
-        },
-            error: (error) => {
-            console.log(JSON.stringify(error))
-        }});
-            // .pipe(map(user => {
-            //     // login successful if there's a jwt token in the response
-            //     debugger
-            //     if (user && user.token) {
-            //         this.user = user;
-            //         // store user details and jwt in session
-            //         sessionStorage.setItem('currentUser', JSON.stringify(user));
-            //     }
-            //     return user;
-            // }));
+        }).pipe(map(user => {
+            // login successful if there's a jwt token in the response
+            if (user.principal) {
+                this.user = user;
+                // store user details and jwt in session
+                sessionStorage.setItem('currentUser', JSON.stringify(user));
+            }
+            return user;
+        }));
     }
 
     /**

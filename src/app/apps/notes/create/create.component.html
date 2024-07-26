@@ -1,0 +1,48 @@
+<!-- page title -->
+<app-page-title [breadcrumbItems]="pageTitle" title="Dodaj notatkę"></app-page-title>
+
+<form (ngSubmit)="onSubmit()" #newProject="ngForm">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="mb-6">
+                                <label for="projectname" class="form-label">Tytuł</label>
+                                <input type="text" id="projectname" class="form-control" name="title" required
+                                       placeholder="Podaj tytuł notatki" [(ngModel)]="title" #name="ngModel"
+                                       [ngClass]="{'is-invalid': newProject.submitted && name.invalid}">
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="project-overview" class="form-label">Treść notatki</label>
+                                <textarea class="form-control" id="content" rows="5" name="projectOverview"
+                                          required placeholder="Wpisz tutaj treść swojej notatki"
+                                          [(ngModel)]="content" #overview="ngModel"
+                                          [ngClass]="{'is-invalid': newProject.submitted && overview.invalid}"></textarea>
+                            </div>
+
+
+                        </div> <!-- end col-->
+
+                    </div>
+                    <!-- end row -->
+
+
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-success waves-effect waves-light m-1"><i
+                                    class="fe-check-circle me-1"></i> Utwórz</button>
+                            <button type="button" class="btn btn-light waves-effect waves-light m-1"><i
+                                    class="fe-x me-1"></i> Anuluj</button>
+                        </div>
+                    </div>
+
+                </div> <!-- end card-body -->
+            </div> <!-- end card-->
+        </div> <!-- end col-->
+    </div>
+    <!-- end row-->
+</form>

@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'social-feed', loadChildren: () => import('./social-feed/social-feed.module').then(m => m.SocialFeedModule) },
   { path: 'companies', loadChildren: () => import('./companies/companies.module').then(m => m.CompaniesModule) },
   { path: 'projects', loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule) },
+  { path: 'notes', loadChildren: () => import('./notes/notes.module').then(m => m.NotesModule) },
   { path: 'tasks', loadChildren: () => import('./tasks/tasks.module').then(m => m.TasksModule) },
   { path: 'contacts', loadChildren: () => import('./contacts/contacts.module').then(m => m.ContactsModule) },
   { path: 'tickets', loadChildren: () => import('./tickets/tickets.module').then(m => m.TicketsModule) },
