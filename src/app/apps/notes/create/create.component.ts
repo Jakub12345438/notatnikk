@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Select2Data, Select2Value } from 'ng-select2-component';
 import { BreadcrumbItem } from 'src/app/shared/page-title/page-title.model';
 import {HttpClient} from "@angular/common/http";
+import Swal from "sweetalert2";
 
 // selected member dropdown
 type selectedMember = {
@@ -42,7 +43,15 @@ export class CreateComponent implements OnInit {
    */
   onSubmit(): void {
     if (this.newProject.form.valid) {
-      this.http.post(`http://localhost:8080/note`, {title: this.title, content: this.content}, {withCredentials: true}).subscribe();
+      this.http.post(`http://localhost:8080/note`, {title: this.title, content: this.content}, {withCredentials: true})
+          .subscribe({
+            next: () => {
+              Swal.fire(
+                  { title: 'Notatka zapisana', position: "center", icon: "success", showConfirmButton: false, timer: 1500}
+              );
+            }
+          });
+
       this.newProject.form.reset();
 
     }

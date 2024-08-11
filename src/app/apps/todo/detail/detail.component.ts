@@ -1,14 +1,10 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Chart } from 'chart.js';
 import { ChartjsOptions } from 'src/app/pages/charts/chartjs/chartjs.model';
 import { BreadcrumbItem } from 'src/app/shared/page-title/page-title.model';
 import { DUMMY_PROJECTS } from '../shared/data';
 import { Project } from '../shared/projects.model';
-import {Note} from "../shared/note.model";
-import {HttpClient} from "@angular/common/http";
-import {QuillModules} from "ngx-quill";
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-project-detail',
@@ -19,50 +15,22 @@ export class DetailComponent implements OnInit {
 
   pageTitle: BreadcrumbItem[] = [];
   selectedProject!: Project;
-  selectedNote!: Note;
   projectChartOptions!: ChartjsOptions;
-  contentToEdit: string = "";
-  quillConfig: QuillModules = {};
-  contentEditDisable: boolean = true;
-  closePopUp: boolean = false;
 
-  constructor (private route: ActivatedRoute,
-               private http: HttpClient,
-               private modalService: NgbModal,
-               private router: Router) { }
+  constructor (private route: ActivatedRoute) { }
 
   ngOnInit(): void {
 
-    this.pageTitle = [{ label: 'Notatki', path: '/' }, { label: 'Szczegóły', path: '/', active: true }];
-    this.contentToEdit = 'some text';
+    this.pageTitle = [{ label: 'Projects', path: '/' }, { label: 'Project Details', path: '/', active: true }];
+
     this.route.queryParams.subscribe(params => {
       if (params && params.hasOwnProperty('id')) {
-        // this.selectedProject = DUMMY_PROJECTS.filter(x => String(x.id) === params['id'])[0];
-         this.http.get<Note>('http://localhost:8080/note/'+params['id']).subscribe(result=> this.selectedNote = result);
+        this.selectedProject = DUMMY_PROJECTS.filter(x => String(x.id) === params['id'])[0];
       } else {
         this.selectedProject = DUMMY_PROJECTS[0];
       }
     });
     this.initializeChartConfig();
-  }
-
-  onContentEdit(){
-    this.contentEditDisable=false;
-  }
-
-  openAlertModal(content: TemplateRef<NgbModal>, variant: string): void {
-    this.modalService.open(content, { size: 'sm', modalDialogClass: 'modal-filled bg-' + variant });
-  }
-
-  onContentSave(){
-    this.contentEditDisable = true;
-    this.http.put('http://localhost:8080/note/'+this.selectedNote.id, this.selectedNote).subscribe();
-  }
-
-  onContentDelete(modal: any){
-    modal.close();
-    this.http.delete('http://localhost:8080/note/'+this.selectedNote.id).subscribe();
-    this.router.navigate(['/apps/notes/list']);
   }
 
   /**

@@ -6,8 +6,6 @@ import { WidgetModule } from 'src/app/shared/widget/widget.module';
 import { PageTitleModule } from 'src/app/shared/page-title/page-title.module';
 import { DetailRoutingModule } from './detail-routing.module';
 import { DetailComponent } from './detail.component';
-import {QuillModule} from "ngx-quill";
-import {FormsModule} from "@angular/forms";
 
 
 
@@ -15,16 +13,14 @@ import {FormsModule} from "@angular/forms";
   declarations: [
     DetailComponent
   ],
-    imports: [
-        CommonModule,
-        NgbTooltipModule,
-        NgbDropdownModule,
-        NgChartsModule,
-        WidgetModule,
-        PageTitleModule,
-        DetailRoutingModule,
-        QuillModule,
-        FormsModule
-    ]
+  imports: [
+    CommonModule,
+    NgbTooltipModule,
+    NgbDropdownModule,
+    NgChartsModule,
+    WidgetModule,
+    PageTitleModule,
+    DetailRoutingModule
+  ]
 })
 export class DetailModule { }

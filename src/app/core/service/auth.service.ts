@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {map} from 'rxjs/operators';
 
-import { User } from '../models/auth.models';
+import {User} from '../models/auth.models';
+import {OAuthService} from "angular-oauth2-oidc";
 
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class AuthenticationService {
     user: User | null = null;
 
-    constructor (private http: HttpClient) {
+    constructor(private http: HttpClient, private oauthService: OAuthService) {
     }
 
     /**
@@ -27,23 +28,12 @@ export class AuthenticationService {
      * @param email email of user
      * @param password password of user
      */
+
     login(username: string, password: string): any {
 
-        const formData = new FormData();
-        formData.append('username', username);
-        formData.append('password', password);
 
-        return this.http.post<any>(`http://localhost:8080/login`, {username: username, password: password} , {
-            headers: {'Content-Type': 'application/json' }
-        }).pipe(map(user => {
-            // login successful if there's a jwt token in the response
-            if (user.principal) {
-                this.user = user;
-                // store user details and jwt in session
-                sessionStorage.setItem('currentUser', JSON.stringify(user));
-            }
-            return user;
-        }));
+
+
     }
 
     /**
@@ -53,11 +43,10 @@ export class AuthenticationService {
      * @param password password of user
      */
     signup(name: string, email: string, password: string): any {
-        return this.http.post<any>(`/api/signup`, { name, email, password })
+        return this.http.post<any>(`/api/signup`, {name, email, password})
             .pipe(map(user => user));
 
     }
-
 
 
     /**
