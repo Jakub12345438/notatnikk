@@ -1,10 +1,9 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { Chart } from 'chart.js';
-import { ChartjsOptions } from 'src/app/pages/charts/chartjs/chartjs.model';
-import { BreadcrumbItem } from 'src/app/shared/page-title/page-title.model';
-import { DUMMY_PROJECTS } from '../shared/data';
-import { Project } from '../shared/projects.model';
+import {ChartjsOptions} from 'src/app/pages/charts/chartjs/chartjs.model';
+import {BreadcrumbItem} from 'src/app/shared/page-title/page-title.model';
+import {DUMMY_PROJECTS} from '../shared/data';
+import {Project} from '../shared/projects.model';
 import {Note} from "../shared/note.model";
 import {HttpClient} from "@angular/common/http";
 import {QuillModules} from "ngx-quill";
@@ -63,6 +62,10 @@ export class DetailComponent implements OnInit {
     modal.close();
     this.http.delete('http://localhost:8080/note/'+this.selectedNote.id).subscribe();
     this.router.navigate(['/apps/notes/list']);
+  }
+
+  fetchData(){
+
   }
 
   /**
