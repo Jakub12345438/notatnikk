@@ -22,11 +22,11 @@ type selectedMember = {
 export class CreateComponent implements OnInit {
 
   pageTitle: BreadcrumbItem[] = [];
-  title: string = '';
+  projectName: string = '';
   content: string = '';
-  projectStartDate: string = '';
-  projectEndDate: string = '';
-  todoPrivacy: string = 'Team';
+  toDoStartDate: string = '';
+  toDoEndDate: string = '';
+  permission: string = 'Team';
   files: File[] = [];
   submitted: boolean = false;
 
@@ -36,7 +36,7 @@ export class CreateComponent implements OnInit {
 
   users: AppUser[] = [];
 
-  @ViewChild('newTodo', { static: true }) newProject!: NgForm;
+  @ViewChild('newProject', { static: true }) newProject!: NgForm;
   constructor (private sanitizer: DomSanitizer, private http: HttpClient) { }
 
   ngOnInit(): void {

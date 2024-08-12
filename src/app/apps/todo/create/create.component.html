@@ -1,7 +1,7 @@
 <!-- page title -->
 <app-page-title [breadcrumbItems]="pageTitle" title="Utwórz zadanie"></app-page-title>
 
-<form (ngSubmit)="onSubmit()" #newTodo="ngForm">
+<form (ngSubmit)="onSubmit()" #newProject="ngForm">
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -12,29 +12,34 @@
                             <div class="mb-3">
                                 <label for="projectname" class="form-label">Tytuł</label>
                                 <input type="text" id="projectname" class="form-control" name="projectName" required
-                                       placeholder="Podaj tytuł zadania" [(ngModel)]="title" #name="ngModel"
-                                       [ngClass]="{'is-invalid': newTodo.submitted && name.invalid}">
+                                    placeholder="Podaj tytuł zadania" [(ngModel)]="projectName" #name="ngModel"
+                                    [ngClass]="{'is-invalid': newProject.submitted && name.invalid}">
                             </div>
 
                             <div class="mb-3">
                                 <label for="project-overview" class="form-label">Treść</label>
                                 <textarea class="form-control" id="project-overview" rows="5" name="projectOverview"
-                                          required placeholder="Opisz treść zadania..."
+                                          required placeholder="Opisz zadanie w kilku zdaniach.."
                                           [(ngModel)]="content" #overview="ngModel"
-                                          [ngClass]="{'is-invalid': newTodo.submitted && overview.invalid}"></textarea>
+                                          [ngClass]="{'is-invalid': newProject.submitted && overview.invalid}"></textarea>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Widoczność zadania</label> <br />
+                                <label class="form-label">Uprawnienia: </label> <br />
                                 <div class="form-check form-check-inline">
-                                    <input type="radio" id="customRadio1" name="customRadio" value="Private"
-                                           [(ngModel)]="todoPrivacy" class="form-check-input">
-                                    <label class="form-check-label" for="customRadio1">Tylko autor</label>
+                                    <input type="radio" id="customRadio1" name="customRadio" value="OWNER"
+                                           [(ngModel)]="permission" class="form-check-input">
+                                    <label class="form-check-label" for="customRadio1">Tylko Autor</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input type="radio" id="customRadio2" name="customRadio" value="Team"
-                                           [(ngModel)]="todoPrivacy" class="form-check-input">
+                                    <input type="radio" id="customRadio2" name="customRadio" value="CONTRIBUTOR"
+                                           [(ngModel)]="permission" class="form-check-input">
                                     <label class="form-check-label" for="customRadio2">Zespół</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" id="customRadio3" name="customRadio" value="USER"
+                                           [(ngModel)]="permission" class="form-check-input" checked>
+                                    <label class="form-check-label" for="customRadio3">Publiczny</label>
                                 </div>
                             </div>
 
@@ -44,9 +49,9 @@
                                     <div class="mb-3 position-relative">
                                         <label class="form-label">Data rozpoczęcia</label>
                                         <input type="text" class="form-control" id="startDate" autocomplete="off"
-                                            name="startDate" ngbDatepicker placeholder="18.08.2024"
+                                            name="startDate" ngbDatepicker placeholder="12.08.2024"
                                             #startDate="ngbDatepicker" (click)="startDate.toggle()" name="startDate"
-                                            [(ngModel)]="projectStartDate" />
+                                            [(ngModel)]="toDoStartDate" />
                                     </div>
                                 </div>
 
@@ -57,15 +62,17 @@
                                         <input type="text" class="form-control" id="endDate" autocomplete="off"
                                             name="endDate" ngbDatepicker placeholder="15.08.2024"
                                             #endDate="ngbDatepicker" (click)="endDate.toggle()" name="endDate"
-                                            [(ngModel)]="projectEndDate" />
+                                            [(ngModel)]="toDoEndDate" />
                                     </div>
                                 </div>
                             </div>
 
                             <div class="mb-3">
+
                             </div>
 
                             <div class="mb-3">
+
 
                             </div>
 
@@ -73,7 +80,7 @@
 
                         <div class="col-xl-6">
                             <div>
-                                <label for="project-overview" class="form-label">Zespół: </label>
+                                <label for="project-overview" class="form-label">Zespół</label>
                                 <select2 [data]="teamMembers" (update)="addMember($event)">
                                 </select2>
 
