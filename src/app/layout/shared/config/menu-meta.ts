@@ -36,30 +36,6 @@ const MENU_ITEMS: MenuItem[] = [
         link: '/apps/chat',
     },
 
-
-    { key: 'apps-companies', label: 'Companies', isTitle: false, icon: 'activity', link: '/apps/companies' },
-    {
-        key: 'apps-projects',
-        label: 'Projects',
-        isTitle: false,
-        icon: 'briefcase',
-        collapsed: true,
-        children: [
-            { key: 'project-list', label: 'List', link: '/apps/projects/list', parentKey: 'apps-projects' },
-            {
-                key: 'project-details',
-                label: 'Details',
-                link: '/apps/projects/details',
-                parentKey: 'apps-projects',
-            },
-            {
-                key: 'project-create-project',
-                label: 'Create Project',
-                link: '/apps/projects/create',
-                parentKey: 'apps-projects',
-            },
-        ],
-    },
     {
         key: 'apps-notes',
         label: 'Notatki',
@@ -79,6 +55,28 @@ const MENU_ITEMS: MenuItem[] = [
                 label: 'Dodaj notatkę',
                 link: '/apps/notes/create',
                 parentKey: 'apps-notes',
+            },
+        ],
+    },
+    {
+        key: 'apps-todo',
+        label: 'Zadania',
+        isTitle: false,
+        icon: 'clipboard',
+        collapsed: true,
+        children: [
+            { key: 'todo-list', label: 'Lista zadań', link: '/apps/todo/list', parentKey: 'apps-todo' },
+            {
+                key: 'todo-details',
+                label: 'Szczegóły zadania',
+                link: '/apps/todo/details',
+                parentKey: 'apps-todo',
+            },
+            {
+                key: 'todo-create-todo',
+                label: 'Dodaj zadanie',
+                link: '/apps/todo/create',
+                parentKey: 'apps-todo',
             },
         ],
     },
@@ -104,24 +102,6 @@ const MENU_ITEMS: MenuItem[] = [
             { key: 'contacts-list', label: 'Members List', link: '/apps/contacts/list', parentKey: 'apps-contacts' },
             { key: 'contacts-profile', label: 'Profile', link: '/apps/contacts/profile', parentKey: 'apps-contacts' },
         ],
-    },
-    {
-        key: 'apps-tickets',
-        label: 'Tickets',
-        isTitle: false,
-        icon: 'aperture',
-        collapsed: true,
-        children: [
-            { key: 'tickets-list', label: 'List', link: '/apps/tickets/list', parentKey: 'apps-tickets' },
-            { key: 'tickets-details', label: 'Details', link: '/apps/tickets/details', parentKey: 'apps-tickets' },
-        ],
-    },
-    {
-        key: 'apps-file-manager',
-        label: 'File Manager',
-        isTitle: false,
-        icon: 'folder-plus',
-        link: '/apps/file-manager',
     },
     { key: 'custom', label: 'Custom', isTitle: true },
     {
@@ -613,6 +593,28 @@ const TWO_COl_MENU_ITEMS: MenuItem[] = [
                         label: 'Dodaj notatkę',
                         link: '/apps/notes/create',
                         parentKey: 'apps-notes',
+                    },
+                ],
+            },
+            {
+                key: 'apps-todo',
+                label: 'Zadania',
+                isTitle: false,
+                icon: 'clipboard',
+                collapsed: true,
+                children: [
+                    { key: 'todo-list', label: 'Lista zadań', link: '/apps/todo/list', parentKey: 'apps-todo' },
+                    {
+                        key: 'todo-details',
+                        label: 'Szczegóły zadania',
+                        link: '/apps/todo/details',
+                        parentKey: 'apps-todo',
+                    },
+                    {
+                        key: 'todo-create-todo',
+                        label: 'Dodaj zadanie',
+                        link: '/apps/todo/create',
+                        parentKey: 'apps-todo',
                     },
                 ],
             },
@@ -1195,16 +1197,25 @@ const HORIZONTAL_MENU_ITEMS: MenuItem[] = [
                 ],
             },
             {
-                key: 'apps-tasks',
-                label: 'Tasks',
+                key: 'apps-todo',
+                label: 'Zadania',
                 isTitle: false,
                 icon: 'clipboard',
-                parentKey: 'apps',
                 collapsed: true,
                 children: [
-                    { key: 'task-list', label: 'List', link: '/apps/tasks/list', parentKey: 'apps-tasks' },
-                    { key: 'task-details', label: 'Details', link: '/apps/tasks/details', parentKey: 'apps-tasks' },
-                    { key: 'task-kanban', label: 'Kanban Board', link: '/apps/tasks/kanban', parentKey: 'apps-tasks' },
+                    { key: 'todo-list', label: 'Lista zadań', link: '/apps/todo/list', parentKey: 'apps-todo' },
+                    {
+                        key: 'todo-details',
+                        label: 'Szczegóły zadania',
+                        link: '/apps/todo/details',
+                        parentKey: 'apps-todo',
+                    },
+                    {
+                        key: 'todo-create-todo',
+                        label: 'Dodaj zadanie',
+                        link: '/apps/todo/create',
+                        parentKey: 'apps-todo',
+                    },
                 ],
             },
             {

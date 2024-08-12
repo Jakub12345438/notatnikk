@@ -11,8 +11,7 @@ import {NgChartsModule} from 'ng2-charts';
 import {NgxDropzoneModule} from 'ngx-dropzone';
 import {Select2Module} from 'ng-select2-component';
 import {PageTitleModule} from 'src/app/shared/page-title/page-title.module';
-import {ProjectsRoutingModule} from './projects-routing.module';
-import {NotesRoutingModule} from "../notes/notes-routing.module";
+import {TodoRoutingModule} from './todo-routing.module';
 
 
 @NgModule({
@@ -28,8 +27,8 @@ import {NotesRoutingModule} from "../notes/notes-routing.module";
         NgbProgressbarModule,
         PageTitleModule,
         WidgetModule,
-        ProjectsRoutingModule,
+        TodoRoutingModule,
     ]
 })
-export class ProjectsModule {
+export class TodoModule {
 }

@@ -1,8 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
-import { AppsRoutingModule } from './apps-routing.module';
-import { FullCalendarModule } from '@fullcalendar/angular';
+import {AppsRoutingModule} from './apps-routing.module';
 
 
 @NgModule({

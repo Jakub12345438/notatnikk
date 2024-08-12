@@ -3,6 +3,9 @@ import { NgForm } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Select2Data, Select2Value } from 'ng-select2-component';
 import { BreadcrumbItem } from 'src/app/shared/page-title/page-title.model';
+import {HttpClient} from "@angular/common/http";
+import {AppUser} from "../../../auth/account/shared/appuser.model";
+import {map} from "rxjs/operators";
 
 // selected member dropdown
 type selectedMember = {
@@ -19,13 +22,11 @@ type selectedMember = {
 export class CreateComponent implements OnInit {
 
   pageTitle: BreadcrumbItem[] = [];
-  projectName: string = '';
-  projectOverview: string = '';
+  title: string = '';
+  content: string = '';
   projectStartDate: string = '';
   projectEndDate: string = '';
-  projectBudget: number = 0;
-  projectPrivacy: string = 'Team';
-  projectPriority: Select2Value = 'LW';
+  todoPrivacy: string = 'Team';
   files: File[] = [];
   submitted: boolean = false;
 
@@ -33,11 +34,15 @@ export class CreateComponent implements OnInit {
   priority: Select2Data = [];
   selectedMembers: selectedMember[] = [];
 
-  @ViewChild('newProject', { static: true }) newProject!: NgForm;
-  constructor (private sanitizer: DomSanitizer) { }
+  users: AppUser[] = [];
+
+  @ViewChild('newTodo', { static: true }) newProject!: NgForm;
+  constructor (private sanitizer: DomSanitizer, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.pageTitle = [{ label: 'Projects', path: '/' }, { label: 'Create Project', path: '/', active: true }];
+    this.pageTitle = [{ label: 'Zadania', path: '/' }, { label: 'Utwórz zadanie', path: '/', active: true }];
+
+    this.fetchAllUsers();
 
     this.priority = [
       {
@@ -54,51 +59,67 @@ export class CreateComponent implements OnInit {
       }
     ];
 
-    this.teamMembers = [
-      {
-        value: 'Shreyu',
-        label: 'Shreyu N',
-        data: { id: 1, name: 'Shreyu N', image: 'assets/images/users/user-7.jpg' }
-      },
-      {
-        value: 'Greeva',
-        label: 'Greeva N',
-        data: { id: 2, name: 'Greeva N', image: 'assets/images/users/user-10.jpg' }
-      },
-      {
-        value: 'Dhyanu',
-        label: 'Dhyanu B',
-        data: { id: 3, name: 'Dhyanu B', image: 'assets/images/users/user-9.jpg' }
-      },
-      {
-        value: 'Mannat',
-        label: 'Mannat B',
-        data: { id: 4, name: 'Mannat B', image: 'assets/images/users/user-4.jpg' }
-      },
-      {
-        value: 'Katu',
-        label: 'Katu s',
-        data: { id: 5, name: 'Katu S', image: 'assets/images/users/user-5.jpg' }
-      },
-      {
-        value: 'Nik',
-        label: 'Nik N',
-        data: { id: 6, name: 'Nik N', image: 'assets/images/users/user-6.jpg' }
-      },
-      {
-        value: 'Rik',
-        label: 'Rik N',
-        data: { id: 7, name: 'Rik N', image: 'assets/images/users/user-1.jpg' }
-      }
-    ]
+    // this.teamMembers = [
+    //   {
+    //     value: 'Shreyu',
+    //     label: 'Shreyu N',
+    //     data: { id: 1, name: 'Shreyu N', image: 'assets/images/users/user-7.jpg' }
+    //   },
+    //   {
+    //     value: 'Greeva',
+    //     label: 'Greeva N',
+    //     data: { id: 2, name: 'Greeva N', image: 'assets/images/users/user-10.jpg' }
+    //   },
+    //   {
+    //     value: 'Dhyanu',
+    //     label: 'Dhyanu B',
+    //     data: { id: 3, name: 'Dhyanu B', image: 'assets/images/users/user-9.jpg' }
+    //   },
+    //   {
+    //     value: 'Mannat',
+    //     label: 'Mannat B',
+    //     data: { id: 4, name: 'Mannat B', image: 'assets/images/users/user-4.jpg' }
+    //   },
+    //   {
+    //     value: 'Katu',
+    //     label: 'Katu s',
+    //     data: { id: 5, name: 'Katu S', image: 'assets/images/users/user-5.jpg' }
+    //   },
+    //   {
+    //     value: 'Nik',
+    //     label: 'Nik N',
+    //     data: { id: 6, name: 'Nik N', image: 'assets/images/users/user-6.jpg' }
+    //   },
+    //   {
+    //     value: 'Rik',
+    //     label: 'Rik N',
+    //     data: { id: 7, name: 'Rik N', image: 'assets/images/users/user-1.jpg' }
+    //   }
+    // ]
 
     this.selectedMembers = [
-      { id: 1, name: 'Shreyu N', image: 'assets/images/users/user-7.jpg' },
-      { id: 2, name: 'Greeva N', image: 'assets/images/users/user-10.jpg' },
-      { id: 3, name: 'Dhyanu B', image: 'assets/images/users/user-9.jpg' }
     ];
   }
 
+  fetchAllUsers(){
+    this.http.get<AppUser[]>('http://localhost:8080/user')
+        .subscribe(result=> {
+          this.users = result;
+
+          this.teamMembers = this.users.map(user=> {
+            return {
+              value: user.username,
+              label: user.firstName + ' ' + user.lastName,
+              enabled: user.enabled,
+              data: {
+                id: user.id,
+                name: user.firstName + ' ' + user.lastName,
+                image: 'assets/images/users/user-10.png'
+              }
+            }
+          })
+        });
+  }
   /**
    *  on project form submit
    */

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { BreadcrumbItem } from 'src/app/shared/page-title/page-title.model';
-import { DUMMY_PROJECTS } from '../shared/data';
-import { Project } from '../shared/projects.model';
+import {Component, OnInit} from '@angular/core';
+import {BreadcrumbItem} from 'src/app/shared/page-title/page-title.model';
+import {Todo} from '../shared/todo.model';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-project-list',
@@ -12,12 +12,12 @@ export class ListComponent implements OnInit {
 
   pageTitle: BreadcrumbItem[] = [];
 
-  projectList: Project[] = [];
+  taskList: Todo[] = [];
 
-  constructor () { }
+  constructor (private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.pageTitle = [{ label: 'Projects', path: '/' }, { label: 'Projects List', path: '/', active: true }];
+    this.pageTitle = [{ label: 'Zadania', path: '/' }, { label: 'Lista Zadań', path: '/', active: true }];
     // get project list
     this._fetchData();
 
@@ -27,7 +27,7 @@ export class ListComponent implements OnInit {
    * fetches project list
    */
   _fetchData(): void {
-    this.projectList = DUMMY_PROJECTS;
+    this.http.get<Todo[]>('http://localhost:8080/todo').subscribe(result =>this.taskList = result);
   }
 
 
