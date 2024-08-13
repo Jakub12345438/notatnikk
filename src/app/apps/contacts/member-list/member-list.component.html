@@ -62,56 +62,66 @@
 <!-- Modal -->
 <ng-template #content let-modal>
     <div class="modal-header bg-light">
-        <h4 class="modal-title" id="myCenterModalLabel">Add New Customers</h4>
+        <h4 class="modal-title" id="myCenterModalLabel">Dodaj nowego użytkownika</h4>
         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('')"></button>
     </div>
     <div class="modal-body p-4">
         <form [formGroup]="newCustomer" #addCustomer="ngForm">
             <div class="mb-3">
-                <label for="name" class="form-label"> Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Enter full name" required
-                    formControlName="name" [ngClass]="{ 'is-invalid': addCustomer.submitted && form1.name.invalid }">
-                <div *ngIf="addCustomer.submitted && form1.name.invalid " class="invalid-feedback">
-                    Please provide name
+                <label for="firstName" class="form-label">Imię</label>
+                <input type="text" class="form-control" id="firstName" placeholder="Wprowadź swoje imię..." required
+                    formControlName="firstName" [ngClass]="{ 'is-invalid': addCustomer.submitted && form1.firstName.invalid }">
+                <div *ngIf="addCustomer.submitted && form1.firstName.invalid " class="invalid-feedback">
+                   Proszę podać imię
                 </div>
             </div>
             <div class="mb-3">
-                <label for="position" class="form-label">Position</label>
-                <input type="text" class="form-control" id="position" placeholder="Enter position" required
-                    formControlName="position"
-                    [ngClass]="{ 'is-invalid': addCustomer.submitted && form1.position.invalid }">
-
-                <div *ngIf="addCustomer.submitted && form1.position.invalid " class="invalid-feedback">
-                    Please provide position
+                <label for="lastName" class="form-label">Nazwisko</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Wprowadź swoje nazwisko..." required
+                       formControlName="lastName" [ngClass]="{ 'is-invalid': addCustomer.submitted && form1.lastName.invalid }">
+                <div *ngIf="addCustomer.submitted && form1.lastName.invalid " class="invalid-feedback">
+                    Proszę podać nazwisko
                 </div>
             </div>
             <div class="mb-3">
-                <label for="category" class="form-label">Company</label>
-                <input type="text" class="form-control" id="company" placeholder="Enter Company" required
-                    formControlName="company"
-                    [ngClass]="{ 'is-invalid': addCustomer.submitted && form1.company.invalid }">
+                <label for="username" class="form-label">Nazwa użytkownika</label>
+                <input type="text" class="form-control" id="username" placeholder="Nazwa użytkownika" required
+                    formControlName="username"
+                    [ngClass]="{ 'is-invalid': addCustomer.submitted && form1.username.invalid }">
 
-                <div *ngIf="addCustomer.submitted && form1.company.invalid " class="invalid-feedback">
-                    Please provide company
+                <div *ngIf="addCustomer.submitted && form1.username.invalid " class="invalid-feedback">
+                    Proszę podać nazwę użytkownika
                 </div>
             </div>
-
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" required
-                    formControlName="email" [ngClass]="{ 'is-invalid': addCustomer.submitted && form1.email.invalid }">
+                <label for="password" class="form-label">Hasło</label>
+                <input type="password" class="form-control" id="password" placeholder="Podaj hasło" required
+                    formControlName="password"
+                    [ngClass]="{ 'is-invalid': addCustomer.submitted && form1.password.invalid }">
 
-                <div *ngIf="addCustomer.submitted && form1.email.invalid " class="invalid-feedback">
-                    Please provide valid email
+                <div *ngIf="addCustomer.submitted && form1.password.invalid " class="invalid-feedback">
+                    Proszę podać hasło
                 </div>
             </div>
+
 
 
             <div class="text-end">
-                <button type="submit" class="btn btn-success waves-effect waves-light me-1">Save</button>
+                <button type="submit" class="btn btn-success waves-effect waves-light me-1" (click)="onSubmitForm()" >Zapisz</button>
                 <button type="button" class="btn btn-danger waves-effect waves-light"
-                    (click)="modal.close('')">Continue</button>
+                    (click)="modal.close('')">Anuluj</button>
             </div>
         </form>
+    </div>
+</ng-template>
+
+<ng-template #alertModal let-modal>
+    <div class="modal-body p-4">
+        <div class="text-center ">
+            <i class="dripicons-warning h1 text-white"></i>
+            <h4 class="mt-2 text-white">Uwaga</h4>
+            <p class="mt-3">Użytkownik o takiej nazwie już istnieje !</p>
+            <button type="button" class="btn btn-light my-2" (click)="modal.close('Close click')">Kontynuuj</button>
+        </div>
     </div>
 </ng-template>
