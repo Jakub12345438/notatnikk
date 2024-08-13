@@ -8,8 +8,8 @@ export interface Todo {
     contributors: AppUser[];
     creator: AppUser;
     lastUpdatedBy: AppUser;
-    createdAt: Date;
-    updatedAt: Date;
-    startDate?: Date;
-    endDate?: Date;
+    createdAt: string;
+    updatedAt: string;
+    startDate: string;
+    endDate: string;
 }

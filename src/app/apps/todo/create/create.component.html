@@ -12,8 +12,8 @@
                             <div class="mb-3">
                                 <label for="projectname" class="form-label">Tytuł</label>
                                 <input type="text" id="projectname" class="form-control" name="projectName" required
-                                    placeholder="Podaj tytuł zadania" [(ngModel)]="projectName" #name="ngModel"
-                                    [ngClass]="{'is-invalid': newProject.submitted && name.invalid}">
+                                       placeholder="Podaj tytuł zadania" [(ngModel)]="title" #name="ngModel"
+                                       [ngClass]="{'is-invalid': newProject.submitted && name.invalid}">
                             </div>
 
                             <div class="mb-3">

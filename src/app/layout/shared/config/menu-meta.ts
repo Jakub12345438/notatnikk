@@ -81,26 +81,14 @@ const MENU_ITEMS: MenuItem[] = [
         ],
     },
     {
-        key: 'apps-tasks',
-        label: 'Tasks',
-        isTitle: false,
-        icon: 'clipboard',
-        collapsed: true,
-        children: [
-            { key: 'task-list', label: 'List', link: '/apps/tasks/list', parentKey: 'apps-tasks' },
-            { key: 'task-details', label: 'Details', link: '/apps/tasks/details', parentKey: 'apps-tasks' },
-            { key: 'task-kanban', label: 'Kanban Board', link: '/apps/tasks/kanban', parentKey: 'apps-tasks' },
-        ],
-    },
-    {
         key: 'apps-contacts',
-        label: 'Contacts',
+        label: 'Użytkownicy',
         isTitle: false,
         icon: 'book',
         collapsed: true,
         children: [
-            { key: 'contacts-list', label: 'Members List', link: '/apps/contacts/list', parentKey: 'apps-contacts' },
-            { key: 'contacts-profile', label: 'Profile', link: '/apps/contacts/profile', parentKey: 'apps-contacts' },
+            { key: 'contacts-list', label: 'Lista użytkowników', link: '/apps/contacts/list', parentKey: 'apps-contacts' },
+            { key: 'contacts-profile', label: 'Mój profil', link: '/apps/contacts/profile', parentKey: 'apps-contacts' },
         ],
     },
     { key: 'custom', label: 'Custom', isTitle: true },
@@ -619,21 +607,8 @@ const TWO_COl_MENU_ITEMS: MenuItem[] = [
                 ],
             },
             {
-                key: 'apps-tasks',
-                label: 'Tasks',
-                isTitle: false,
-                icon: 'clipboard',
-                parentKey: 'apps',
-                collapsed: true,
-                children: [
-                    { key: 'task-list', label: 'List', link: '/apps/tasks/list', parentKey: 'apps-tasks' },
-                    { key: 'task-details', label: 'Details', link: '/apps/tasks/details', parentKey: 'apps-tasks' },
-                    { key: 'task-kanban', label: 'Kanban Board', link: '/apps/tasks/kanban', parentKey: 'apps-tasks' },
-                ],
-            },
-            {
                 key: 'apps-contacts',
-                label: 'Contacts',
+                label: 'Użytkownicy',
                 isTitle: false,
                 icon: 'book',
                 parentKey: 'apps',
@@ -641,13 +616,13 @@ const TWO_COl_MENU_ITEMS: MenuItem[] = [
                 children: [
                     {
                         key: 'contacts-list',
-                        label: 'Members List',
+                        label: 'Lista użytkowników',
                         link: '/apps/contacts/list',
                         parentKey: 'apps-contacts',
                     },
                     {
                         key: 'contacts-profile',
-                        label: 'Profile',
+                        label: 'Mój profil',
                         link: '/apps/contacts/profile',
                         parentKey: 'apps-contacts',
                     },
@@ -1220,7 +1195,7 @@ const HORIZONTAL_MENU_ITEMS: MenuItem[] = [
             },
             {
                 key: 'apps-contacts',
-                label: 'Contacts',
+                label: 'Użytkownicy',
                 isTitle: false,
                 icon: 'book',
                 parentKey: 'apps',
@@ -1228,13 +1203,13 @@ const HORIZONTAL_MENU_ITEMS: MenuItem[] = [
                 children: [
                     {
                         key: 'contacts-list',
-                        label: 'Members List',
+                        label: 'Lista użytkowników',
                         link: '/apps/contacts/list',
                         parentKey: 'apps-contacts',
                     },
                     {
                         key: 'contacts-profile',
-                        label: 'Profile',
+                        label: 'Mój profil',
                         link: '/apps/contacts/profile',
                         parentKey: 'apps-contacts',
                     },

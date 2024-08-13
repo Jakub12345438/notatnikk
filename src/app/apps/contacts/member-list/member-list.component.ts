@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { BreadcrumbItem } from 'src/app/shared/page-title/page-title.model';
-import { MemberInfo } from '../shared/contacts.model';
-import { MEMBERLIST } from '../shared/data';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {BreadcrumbItem} from 'src/app/shared/page-title/page-title.model';
+import {MemberInfo} from '../shared/contacts.model';
+import {MEMBERLIST} from '../shared/data';
+import {AppUserDTO} from "../../../auth/account/shared/appuser.model";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-member-list',
@@ -18,15 +20,18 @@ export class MemberListComponent implements OnInit {
   newCustomer!: FormGroup;
   page = 1;
 
+  users: AppUserDTO[] = [];
+
   @ViewChild('content', { static: true }) content: any;
 
   constructor (
     public activeModal: NgbModal,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
-    this.pageTitle = [{ label: 'Contacts', path: '/' }, { label: 'Contacts List', path: '/', active: true }];
+    this.pageTitle = [{ label: 'Użytkownicy', path: '/' }, { label: 'Lista użytkowników', path: '/', active: true }];
     this._fetchData();
     this.newCustomer = this.fb.group({
       name: ['', Validators.required],
@@ -34,6 +39,8 @@ export class MemberListComponent implements OnInit {
       position: ['', Validators.required],
       company: ['', Validators.required]
     });
+
+    this.http.get<AppUserDTO[]>('http://localhost:8080/user').subscribe(response=> {this.users = response});
   }
 
   // convenience getter for easy access to form fields
@@ -65,7 +72,7 @@ export class MemberListComponent implements OnInit {
     else {
       let updatedData = MEMBERLIST;
       //  filter
-      updatedData = updatedData.filter(member => (member.name?.toLowerCase().includes(searchTerm) || member.position?.toLowerCase().includes(searchTerm)));
+      // updatedData = updatedData.filter(member => (member.name?.toLowerCase().includes(searchTerm) || member.position?.toLowerCase().includes(searchTerm)));
       this.memberList = updatedData;
     }
 
