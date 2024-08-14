@@ -53,9 +53,9 @@ export class AuthenticationService {
      * Logout the user
      */
     logout(): void {
-        // remove user from session storage to log user out
-        sessionStorage.removeItem('currentUser');
-        this.user = null;
+        // remove user from session storage to log user out,
+            sessionStorage.removeItem('currentUser');
+            this.user = null;
     }
 }
 

@@ -1,4 +1,4 @@
-import { Experience, MemberInfo, ProfileProjectItem, TimelinePost } from "./contacts.model";
+import { Experience, MemberInfo, ProfileProjectItem } from "./contacts.model";
 
 const MEMBERLIST: MemberInfo[] = [
     {
@@ -162,78 +162,6 @@ const PROJECTS: ProfileProjectItem[] = [
 ];
 
 
-const POSTS: TimelinePost[] = [
-    {
-        id: 1,
-        author: {
-            id: 4,
-            name: 'Jeremy Tomlinson',
-            avatar: 'assets/images/users/user-3.jpg',
-        },
-        postedOn: 'about 2 minuts ago',
-        content:
-            '<p>Story based around the idea of time lapse, animation to post soon!</p><img src="assets/images/small/img-1.jpg" alt="post-img" class="rounded me-1" height="60" /><img src="assets/images/small/img-2.jpg" alt="post-img" class="rounded me-1" height="60" /><img src="assets/images/small/img-3.jpg" alt="post-img" class="rounded me-1" height="60" />',
-        isLiked: false,
-        totalLikes: '12',
-        engagement: true,
-    },
-    {
-        id: 2,
-        author: {
-            id: 1,
-            name: 'Thelma Fridley',
-            avatar: 'assets/images/users/user-4.jpg',
-        },
-        postedOn: 'about 1 hour ago',
-        content:
-            '<div class="font-16 text-center fst-italic text-dark"><i class="mdi mdi-format-quote-open font-20"></i> Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa.</div>',
-        totalLikes: '28',
-        totalComments: '',
-        isLiked: true,
-        comments: [
-            {
-                id: 1,
-                content: 'Nice work, makes me think of The Money Pit.',
-                postedOn: '3 hours ago',
-                author: {
-                    id: 2,
-                    name: 'Jeremy Tomlinson',
-                    avatar: 'assets/images/users/user-3.jpg',
-                },
-                isLiked: true,
-                replies: [
-                    {
-                        id: 3,
-                        content:
-                            "i'm in the middle of a timelapse animation myself! (Very different though.) Awesome stuff.",
-                        postedOn: '5 hours ago',
-                        author: {
-                            id: 3,
-                            name: 'Thelma Fridley',
-                            avatar: 'assets/images/users/user-4.jpg',
-                        },
-                    },
-                ],
-            },
-        ],
-        engagement: true,
-    },
-    {
-        id: 3,
-        author: {
-            id: 4,
-            name: 'Martin Williamson',
-            avatar: 'assets/images/users/user-6.jpg',
-        },
-        postedOn: 'about 20 minuts ago',
-        // scope: 'Public',
-        content:
-            '<p>The parallax is a little odd but O.o that house build is awesome!!</p>' +
-            '<iframe src="https://player.vimeo.com/video/87993762" height="300" class="img-fluid border-0"></iframe>',
-        // "<p>The parallax is a little odd but O.o that house build is awesome!!</p><iframe src='https://player.vimeo.com/video/87993762' height='300' class='img-fluid border-0'></iframe>",
-        isLiked: false,
-        engagement: false,
-    },
-];
 
-export { MEMBERLIST, EXPERIENCE, PROJECTS, POSTS };
+
+export { MEMBERLIST, EXPERIENCE, PROJECTS };

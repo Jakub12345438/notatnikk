@@ -1,4 +1,3 @@
-import { Post } from "../../social-feed/shared/social-feed.model";
 
 export interface MemberInfo {
     id?: number;
@@ -26,8 +25,4 @@ export interface ProfileProjectItem {
     startDate?: string;
     dueDate?: string;
     status?: string;
-}
-
-export interface TimelinePost extends Post {
-    engagement: boolean;
 }

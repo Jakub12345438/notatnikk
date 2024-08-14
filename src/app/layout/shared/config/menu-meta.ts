@@ -3,22 +3,6 @@ import { MenuItem } from '../models/menu.model';
 // menu items for vertcal and detached layout
 const MENU_ITEMS: MenuItem[] = [
     { key: 'navigation', label: 'Navigation', isTitle: true },
-    {
-        key: 'dashboards',
-        label: 'Dashboards',
-        isTitle: false,
-        icon: 'airplay',
-        collapsed: true,
-        badge: { variant: 'success', text: '4' },
-        children: [
-            {
-                key: 'ds-dashboard-1',
-                label: 'Dashboard 1',
-                link: '/dashboard-1',
-                parentKey: 'dashboards',
-            }
-        ],
-    },
 
     { key: 'apps', label: 'Apps', isTitle: true },
     {
@@ -28,13 +12,7 @@ const MENU_ITEMS: MenuItem[] = [
         icon: 'calendar',
         link: '/apps/calendar',
     },
-    {
-        key: 'apps-chat',
-        label: 'Chat',
-        isTitle: false,
-        icon: 'message-square',
-        link: '/apps/chat',
-    },
+
 
     {
         key: 'apps-notes',
@@ -330,38 +308,6 @@ const MENU_ITEMS: MenuItem[] = [
 // menu items for two column menu layout 
 const TWO_COl_MENU_ITEMS: MenuItem[] = [
     {
-        key: 'dashboard',
-        icon: 'home',
-        label: 'Dashboard',
-        isTitle: true,
-        children: [
-            {
-                key: 'ds-dashboard-1',
-                label: 'Dashboard 1',
-                link: '/dashboard-1',
-                parentKey: 'dashboard',
-            },
-            {
-                key: 'ds-dashboard-2',
-                label: 'Dashboard 2',
-                link: '/dashboard-2',
-                parentKey: 'dashboard',
-            },
-            {
-                key: 'ds-dashboard-3',
-                label: 'Dashboard 3',
-                link: '/dashboard-3',
-                parentKey: 'dashboard',
-            },
-            {
-                key: 'ds-dashboard-4',
-                label: 'Dashboard 4',
-                link: '/dashboard-4',
-                parentKey: 'dashboard',
-            },
-        ],
-    },
-    {
         key: 'apps',
         icon: 'grid',
         label: 'Apps',
@@ -374,192 +320,6 @@ const TWO_COl_MENU_ITEMS: MenuItem[] = [
                 icon: 'calendar',
                 link: '/apps/calendar',
                 parentKey: 'apps',
-            },
-            {
-                key: 'apps-chat',
-                label: 'Chat',
-                isTitle: false,
-                icon: 'message-square',
-                link: '/apps/chat',
-                parentKey: 'apps',
-            },
-            {
-                key: 'apps-ecommerce',
-                label: 'Ecommerce',
-                isTitle: false,
-                icon: 'shopping-cart',
-                parentKey: 'apps',
-                collapsed: true,
-                children: [
-                    {
-                        key: 'ecommerce-dashboard',
-                        label: 'Dashboard',
-                        link: '/apps/ecommerce/dashboard',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-products',
-                        label: 'Products',
-                        link: '/apps/ecommerce/products',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-details',
-                        label: 'Product Details',
-                        link: '/apps/ecommerce/product/details/',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-products-edit',
-                        label: 'Add Product',
-                        link: '/apps/ecommerce/products-edit',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-customers',
-                        label: 'Customers',
-                        link: '/apps/ecommerce/customers',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-orders',
-                        label: 'Orders',
-                        link: '/apps/ecommerce/orders',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-order-details',
-                        label: 'Order Details',
-                        link: '/apps/ecommerce/order/details',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-sellers',
-                        label: 'Sellers',
-                        link: '/apps/ecommerce/sellers',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-shopping-cart',
-                        label: 'Shopping Cart',
-                        link: '/apps/ecommerce/shopping-cart',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-checkout',
-                        label: 'Checkout',
-                        link: '/apps/ecommerce/checkout',
-                        parentKey: 'apps-ecommerce',
-                    },
-                ],
-            },
-            {
-                key: 'apps-crm',
-                label: 'CRM',
-                isTitle: false,
-                icon: 'users',
-                parentKey: 'apps',
-                collapsed: true,
-                children: [
-                    {
-                        key: 'crm-dashboard',
-                        label: 'Dashboard',
-                        link: '/apps/crm/dashboard',
-                        parentKey: 'apps-crm',
-                    },
-                    {
-                        key: 'crm-contacts',
-                        label: 'Contacts',
-                        link: '/apps/crm/contacts',
-                        parentKey: 'apps-crm',
-                    },
-                    {
-                        key: 'crm-opportunities',
-                        label: 'Opportunities',
-                        link: '/apps/crm/opportunities',
-                        parentKey: 'apps-crm',
-                    },
-                    {
-                        key: 'crm-leads',
-                        label: 'Leads',
-                        link: '/apps/crm/leads',
-                        parentKey: 'apps-crm',
-                    },
-                    {
-                        key: 'crm-customers',
-                        label: 'Customers',
-                        link: '/apps/crm/customers',
-                        parentKey: 'apps-crm',
-                    },
-                ],
-            },
-            {
-                key: 'apps-email',
-                label: 'Email',
-                isTitle: false,
-                icon: 'mail',
-                parentKey: 'apps',
-                collapsed: true,
-                children: [
-                    {
-                        key: 'email-inbox',
-                        label: 'Inbox',
-                        link: '/apps/email/inbox',
-                        parentKey: 'apps-email',
-                    },
-                    {
-                        key: 'email-read-email',
-                        label: 'Read Email',
-                        link: '/apps/email/details',
-                        parentKey: 'apps-email',
-                    },
-                    {
-                        key: 'email-compose-email',
-                        label: 'Compose Email',
-                        link: '/apps/email/compose',
-                        parentKey: 'apps-email',
-                    },
-                ],
-            },
-            {
-                key: 'apps-social',
-                label: 'Social Feed',
-                isTitle: false,
-                icon: 'rss',
-                link: '/apps/social-feed',
-                badge: { variant: 'pink', text: 'Hot' },
-                parentKey: 'apps',
-            },
-            {
-                key: 'apps-companies',
-                label: 'Companies',
-                isTitle: false,
-                icon: 'activity',
-                link: '/apps/companies',
-                parentKey: 'apps',
-            },
-            {
-                key: 'apps-projects',
-                label: 'Projects',
-                isTitle: false,
-                icon: 'briefcase',
-                parentKey: 'apps',
-                collapsed: true,
-                children: [
-                    { key: 'project-list', label: 'List', link: '/apps/projects/list', parentKey: 'apps-projects' },
-                    {
-                        key: 'project-details',
-                        label: 'Details',
-                        link: '/apps/projects/details',
-                        parentKey: 'apps-projects',
-                    },
-                    {
-                        key: 'project-create-project',
-                        label: 'Create Project',
-                        link: '/apps/projects/create',
-                        parentKey: 'apps-projects',
-                    },
-                ],
             },
             {
                 key: 'apps-notes',
@@ -627,32 +387,7 @@ const TWO_COl_MENU_ITEMS: MenuItem[] = [
                         parentKey: 'apps-contacts',
                     },
                 ],
-            },
-            {
-                key: 'apps-tickets',
-                label: 'Tickets',
-                isTitle: false,
-                icon: 'aperture',
-                parentKey: 'apps',
-                collapsed: true,
-                children: [
-                    { key: 'tickets-list', label: 'List', link: '/apps/tickets/list', parentKey: 'apps-tickets' },
-                    {
-                        key: 'tickets-details',
-                        label: 'Details',
-                        link: '/apps/tickets/details',
-                        parentKey: 'apps-tickets',
-                    },
-                ],
-            },
-            {
-                key: 'apps-file-manager',
-                label: 'File Manager',
-                isTitle: false,
-                icon: 'folder-plus',
-                link: '/apps/file-manager',
-                parentKey: 'apps',
-            },
+            }
         ],
     },
     {
@@ -915,39 +650,6 @@ const TWO_COl_MENU_ITEMS: MenuItem[] = [
 // menu items for horizontal layout
 const HORIZONTAL_MENU_ITEMS: MenuItem[] = [
     {
-        key: 'dashboard',
-        icon: 'home',
-        label: 'Dashboard',
-        isTitle: true,
-        collapsed: true,
-        children: [
-            {
-                key: 'ds-dashboard-1',
-                label: 'Dashboard 1',
-                link: '/dashboard-1',
-                parentKey: 'dashboard',
-            },
-            {
-                key: 'ds-dashboard-2',
-                label: 'Dashboard 2',
-                link: '/dashboard-2',
-                parentKey: 'dashboard',
-            },
-            {
-                key: 'ds-dashboard-3',
-                label: 'Dashboard 3',
-                link: '/dashboard-3',
-                parentKey: 'dashboard',
-            },
-            {
-                key: 'ds-dashboard-4',
-                label: 'Dashboard 4',
-                link: '/dashboard-4',
-                parentKey: 'dashboard',
-            },
-        ],
-    },
-    {
         key: 'apps',
         icon: 'grid',
         label: 'Apps',
@@ -961,192 +663,6 @@ const HORIZONTAL_MENU_ITEMS: MenuItem[] = [
                 icon: 'calendar',
                 link: '/apps/calendar',
                 parentKey: 'apps',
-            },
-            {
-                key: 'apps-chat',
-                label: 'Chat',
-                isTitle: false,
-                icon: 'message-square',
-                link: '/apps/chat',
-                parentKey: 'apps',
-            },
-            {
-                key: 'apps-ecommerce',
-                label: 'Ecommerce',
-                isTitle: false,
-                icon: 'shopping-cart',
-                parentKey: 'apps',
-                collapsed: true,
-                children: [
-                    {
-                        key: 'ecommerce-dashboard',
-                        label: 'Dashboard',
-                        link: '/apps/ecommerce/dashboard',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-products',
-                        label: 'Products',
-                        link: '/apps/ecommerce/products',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-details',
-                        label: 'Product Details',
-                        link: '/apps/ecommerce/product/details/',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-products-edit',
-                        label: 'Add Product',
-                        link: '/apps/ecommerce/products-edit',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-customers',
-                        label: 'Customers',
-                        link: '/apps/ecommerce/customers',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-orders',
-                        label: 'Orders',
-                        link: '/apps/ecommerce/orders',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-order-details',
-                        label: 'Order Details',
-                        link: '/apps/ecommerce/order/details',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-sellers',
-                        label: 'Sellers',
-                        link: '/apps/ecommerce/sellers',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-shopping-cart',
-                        label: 'Shopping Cart',
-                        link: '/apps/ecommerce/shopping-cart',
-                        parentKey: 'apps-ecommerce',
-                    },
-                    {
-                        key: 'ecommerce-checkout',
-                        label: 'Checkout',
-                        link: '/apps/ecommerce/checkout',
-                        parentKey: 'apps-ecommerce',
-                    },
-                ],
-            },
-            {
-                key: 'apps-crm',
-                label: 'CRM',
-                isTitle: false,
-                icon: 'users',
-                parentKey: 'apps',
-                collapsed: true,
-                children: [
-                    {
-                        key: 'crm-dashboard',
-                        label: 'Dashboard',
-                        link: '/apps/crm/dashboard',
-                        parentKey: 'apps-crm',
-                    },
-                    {
-                        key: 'crm-contacts',
-                        label: 'Contacts',
-                        link: '/apps/crm/contacts',
-                        parentKey: 'apps-crm',
-                    },
-                    {
-                        key: 'crm-opportunities',
-                        label: 'Opportunities',
-                        link: '/apps/crm/opportunities',
-                        parentKey: 'apps-crm',
-                    },
-                    {
-                        key: 'crm-leads',
-                        label: 'Leads',
-                        link: '/apps/crm/leads',
-                        parentKey: 'apps-crm',
-                    },
-                    {
-                        key: 'crm-customers',
-                        label: 'Customers',
-                        link: '/apps/crm/customers',
-                        parentKey: 'apps-crm',
-                    },
-                ],
-            },
-            {
-                key: 'apps-email',
-                label: 'Email',
-                isTitle: false,
-                icon: 'mail',
-                parentKey: 'apps',
-                collapsed: true,
-                children: [
-                    {
-                        key: 'email-inbox',
-                        label: 'Inbox',
-                        link: '/apps/email/inbox',
-                        parentKey: 'apps-email',
-                    },
-                    {
-                        key: 'email-read-email',
-                        label: 'Read Email',
-                        link: '/apps/email/details',
-                        parentKey: 'apps-email',
-                    },
-                    {
-                        key: 'email-compose-email',
-                        label: 'Compose Email',
-                        link: '/apps/email/compose',
-                        parentKey: 'apps-email',
-                    },
-                ],
-            },
-            {
-                key: 'apps-social',
-                label: 'Social Feed',
-                isTitle: false,
-                icon: 'rss',
-                link: '/apps/social-feed',
-                badge: { variant: 'pink', text: 'Hot' },
-                parentKey: 'apps',
-            },
-            {
-                key: 'apps-companies',
-                label: 'Companies',
-                isTitle: false,
-                icon: 'activity',
-                link: '/apps/companies',
-                parentKey: 'apps',
-            },
-            {
-                key: 'apps-projects',
-                label: 'Projects',
-                isTitle: false,
-                icon: 'briefcase',
-                parentKey: 'apps',
-                collapsed: true,
-                children: [
-                    { key: 'project-list', label: 'List', link: '/apps/projects/list', parentKey: 'apps-projects' },
-                    {
-                        key: 'project-details',
-                        label: 'Details',
-                        link: '/apps/projects/details',
-                        parentKey: 'apps-projects',
-                    },
-                    {
-                        key: 'project-create-project',
-                        label: 'Create Project',
-                        link: '/apps/projects/create',
-                        parentKey: 'apps-projects',
-                    },
-                ],
             },
             {
                 key: 'apps-notes',
@@ -1214,32 +730,7 @@ const HORIZONTAL_MENU_ITEMS: MenuItem[] = [
                         parentKey: 'apps-contacts',
                     },
                 ],
-            },
-            {
-                key: 'apps-tickets',
-                label: 'Tickets',
-                isTitle: false,
-                icon: 'aperture',
-                parentKey: 'apps',
-                collapsed: true,
-                children: [
-                    { key: 'tickets-list', label: 'List', link: '/apps/tickets/list', parentKey: 'apps-tickets' },
-                    {
-                        key: 'tickets-details',
-                        label: 'Details',
-                        link: '/apps/tickets/details',
-                        parentKey: 'apps-tickets',
-                    },
-                ],
-            },
-            {
-                key: 'apps-file-manager',
-                label: 'File Manager',
-                isTitle: false,
-                icon: 'folder-plus',
-                link: '/apps/file-manager',
-                parentKey: 'apps',
-            },
+            }
         ],
     },
     {

@@ -4,7 +4,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {BreadcrumbItem} from 'src/app/shared/page-title/page-title.model';
 import {MemberInfo} from '../shared/contacts.model';
 import {MEMBERLIST} from '../shared/data';
-import {AppUserDTO} from "../../../auth/account/shared/appuser.model";
+import {AppUser, AppUserDTO} from "../../../auth/account/shared/appuser.model";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 
@@ -93,18 +93,18 @@ export class MemberListComponent implements OnInit {
             username: this.form1.username.value,
             password: this.form1.password.value
         }
-        this.http.get('http://localhost:8080/user?username=' + this.form1.username.value).subscribe({
+        this.http.get<AppUser[]>('http://localhost:8080/user?username=' + this.form1.username.value).subscribe({
             next: value => {
-                debugger
-                this.form1.username.setErrors({'incorrect': true})
-                this.openAlertModal(this.alertModal,'danger')
+                if (value.length < 1) {
+                    this.createUser(requestBody)
+                } else {
+                    this.form1.username.setErrors({'incorrect': true})
+                    this.openAlertModal(this.alertModal, 'danger')
+                }
             },
             error: error => {
                 if (error.status === 404) {
-                    this.http.post('http://localhost:8080/user', requestBody).subscribe(response => {
-                    });
-                    this.activeModal.dismissAll();
-                    this.router.navigate(['/apps/contacts/list']);
+                    this.createUser(requestBody);
                 }
             }
         })
@@ -112,5 +112,12 @@ export class MemberListComponent implements OnInit {
 
     openAlertModal(content: TemplateRef<NgbModal>, variant: string): void {
         this.modalService.open(content, {size: 'sm', modalDialogClass: 'modal-filled bg-' + variant});
+    }
+
+    createUser(requestBody: any) {
+        this.http.post('http://localhost:8080/user', requestBody).subscribe(response => {
+        });
+        this.activeModal.dismissAll();
+        this.router.navigate(['/apps/contacts/list']);
     }
 }
